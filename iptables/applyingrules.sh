@@ -9,7 +9,7 @@ function myfunc() {
 scriptPath=$(dirname $0)
 whitelistInput="${scriptPath}/cidrIp.txt"
 wlineNr=$(wc -l < $whitelistInput)
-printf "Total of %s rules to apply..." $wlineNr
+printf "Total of %s rules to apply...\n" $wlineNr
 
 for ((i = 0 ; i < $wlineNr ; i++)); do
     #  do iptable command
