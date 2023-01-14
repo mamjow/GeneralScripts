@@ -15,8 +15,8 @@ for ((i = 0 ; i < $wlineNr ; i++)); do
     #  do iptable command
     iprange=$(sed -n "${i}p" < $whitelistInput)
     echo $iprange
-    echo ( sudo iptables -A INPUT -s $iprange -j ACCEPT )
-    sudo iptables -A INPUT -s $iprange -j ACCEPT 
+    echo ( iptables -A INPUT -s $iprange -j ACCEPT )
+    iptables -A INPUT -s $iprange -j ACCEPT 
     myfunc $wlineNr $i
 done
 
