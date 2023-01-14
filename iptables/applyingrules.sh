@@ -4,7 +4,7 @@ function myfunc() {
     nr=$2
     value=$(((($nr + 1) * 100) / $total))
     # echo -e "\033[5A"
-    printf "\r%s%%" $value
+    printf "\r%s%% IP: %s" $value $3
 }
 scriptPath=$(dirname $0)
 whitelistInput="${scriptPath}/cidrIp.txt"
@@ -17,7 +17,7 @@ for ((i = 0 ; i < $wLineNr ; i++)); do
     # echo $iprange
     # echo  iptables -A INPUT -s $iprange -j ACCEPT 
     iptables -A INPUT -s $iprange -j ACCEPT
-    myfunc $wLineNr $i
+    myfunc $wLineNr $i $iprange
 done
 
 printf "\n"
