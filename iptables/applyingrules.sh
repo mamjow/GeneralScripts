@@ -3,8 +3,8 @@ function myfunc() {
     total=$1
     nr=$2
     value=$(((($nr + 1) * 100) / $total))
-    # echo -e "\033[5A"
-    printf "\r%s%% IP: %s" $value $3
+    printf '\033[1A\033[K'
+    printf "%s%% IP: %s" $value $3
 }
 scriptPath=$(dirname $0)
 whitelistInput="${scriptPath}/cidrIp.txt"
