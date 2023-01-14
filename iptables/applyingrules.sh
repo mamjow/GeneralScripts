@@ -6,8 +6,8 @@ function myfunc() {
     # echo -e "\033[5A"
     printf "\r%s%%" $value
 }
-
-whitelistInput="${BASH_SOURCE%/*}/cidrIp.txt"
+scriptPath=$(dirname $0)
+whitelistInput="${scriptPath}/cidrIp.txt"
 wlineNr=$(wc -l < $whitelistInput)
 printf "Total of %s rules to apply..." $wlineNr
 
