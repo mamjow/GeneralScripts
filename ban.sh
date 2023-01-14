@@ -1,8 +1,5 @@
 #!/bin/bash
-fileLocation=$(pwd)
-bashLocations="${BASH_SOURCE/./$fileLocation}"
-bashLocations="${bashLocations///ban.sh}"
-sudo chmod +x $bashLocations/iptables/applyingrules.sh
+sudo chmod +x "${BASH_SOURCE%/*}/iptables/applyingrules.sh"
 echo "Hoi hoi"
 while true; do
     read -p "Do you wish to apply Iran, Netherlands firewall whitelist and General block? [y/n]" yn
@@ -10,7 +7,7 @@ while true; do
         [Yy]* )
             echo "Applying ACCEPT rules";
             # ( exec "./iptables/applyingrules.sh" )
-            bash $bashLocations/iptables/applyingrules.sh $bashLocations
+            bash "${BASH_SOURCE%/*}/iptables/applyingrules.sh"
             exit
         break;;
         [Nn]* ) exit;;

@@ -1,5 +1,4 @@
 #!/bin/bash
-$1
 function myfunc() {
     total=$1
     nr=$2
@@ -8,7 +7,7 @@ function myfunc() {
     printf "\r%s%%" $value
 }
 
-whitelistInput="${1}/iptables/cidrIp.txt"
+whitelistInput="${BASH_SOURCE%/*}/cidrIp.txt"
 wlineNr=$(wc -l < $whitelistInput)
 printf "Total of %s rules to apply..." $wlineNr
 
