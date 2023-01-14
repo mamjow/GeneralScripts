@@ -8,16 +8,16 @@ function myfunc() {
 }
 scriptPath=$(dirname $0)
 whitelistInput="${scriptPath}/cidrIp.txt"
-wlineNr=$(wc -l < $whitelistInput)
-printf "Total of %s rules to apply...\n" $wlineNr
+wLineNr=$(wc -l < $whitelistInput)
+printf "Total of %s rules to apply...\n" $wLineNr
 
-for ((i = 0 ; i < $wlineNr ; i++)); do
+for ((i = 0 ; i < $wLineNr ; i++)); do
     #  do iptable command
-    iprange=$(sed -n "${i}p" < $whitelistInput)
+    iprange=$( sed -n "${i}p" < $whitelistInput )
     echo $iprange
-    echo ( iptables -A INPUT -s $iprange -j ACCEPT )
-    iptables -A INPUT -s $iprange -j ACCEPT 
-    myfunc $wlineNr $i
+    # echo  iptables -A INPUT -s $iprange -j ACCEPT 
+    iptables -A INPUT -s $iprange -j ACCEPT
+    myfunc $wLineNr $i
 done
 
 printf "\n"
