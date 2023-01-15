@@ -2,7 +2,7 @@
 function myfunc() {
     total=$1
     nr=$2
-    value=$(((($nr + 1) * 100) / $total))
+    value=$((($nr * 100) / $total))
     # printf "\r%s%% IP: %s" $value $3
     echo -e "\e[1A\e[K${value}%  IP: ${3}"
 }
@@ -11,7 +11,7 @@ whitelistInput="${scriptPath}/cidrIp.txt"
 wLineNr=$(wc -l < $whitelistInput)
 printf "Total of %s rules to apply...\n" $wLineNr
 
-for ((i = 0 ; i < $wLineNr ; i++)); do
+for ((i = 1 ; i <= $wLineNr ; i++)); do
     #  do iptable command
     if iprange=$( sed -n "${i}p" < $whitelistInput ); then
         # echo $iprange
