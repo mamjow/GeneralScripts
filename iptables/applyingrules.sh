@@ -15,9 +15,12 @@ for ((i = 0 ; i < $wLineNr ; i++)); do
     #  do iptable command
     iprange=$( sed -n "${i}p" < $whitelistInput )
     # echo $iprange
-    # echo  iptables -A INPUT -s $iprange -j ACCEPT 
-    iptables -I INPUT -s $iprange -j ACCEPT
-    myfunc $wLineNr $i $iprange
+    # echo  iptables -A INPUT -s $iprange -j ACCEPT
+    if iptables -I INPUT -s $iprange -j ACCEPT; then
+        myfunc $wLineNr $i $iprange
+    else
+        echo "Failed to apply $iprange"
+    fi
 done
 
 printf "\n"
